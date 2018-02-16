@@ -60,8 +60,11 @@ namespace Roslynator.CSharp.Refactorings
                 ReplaceInterpolatedStringWithConcatenationRefactoring.ComputeRefactoring(context, interpolatedString);
             }
 
-            if (context.IsRefactoringEnabled(RefactoringIdentifiers.ReplaceInterpolatedStringWithStringFormat))
+            if (context.IsRefactoringEnabled(RefactoringIdentifiers.ReplaceInterpolatedStringWithStringFormat)
+                && context.Span.IsEmptyAndContainedInSpanOrBetweenSpans(interpolatedString))
+            {
                 ReplaceInterpolatedStringWithStringFormatRefactoring.ComputeRefactoring(context, interpolatedString);
+            }
         }
     }
 }
