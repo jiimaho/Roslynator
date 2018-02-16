@@ -59,6 +59,9 @@ namespace Roslynator.CSharp.Refactorings
             {
                 ReplaceInterpolatedStringWithConcatenationRefactoring.ComputeRefactoring(context, interpolatedString);
             }
+
+            if (context.IsRefactoringEnabled(RefactoringIdentifiers.ReplaceInterpolatedStringWithStringFormat))
+                ReplaceInterpolatedStringWithStringFormatRefactoring.ComputeRefactoring(context, interpolatedString);
         }
     }
 }
